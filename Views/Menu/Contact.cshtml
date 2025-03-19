@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+
+@section Styles {
+    <link href="~/content/contact.css" rel="stylesheet" type="text/css" />
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="bg-contact text-center">
+    <h1 class="display-2">Contact</h1>
+</div>
+
+
+
+
+<div class="content-wrap">
+    <div class="wrapper-content-1">
+        <div class="text-center">
+            <h2 class="mb-4"> GET IN TOUCH</h2>
+            <p>
+                Every Monday, Tuesday and Wednesday evening, we’re offering groups of 5 or more that members an area in our cafe a complimentary Browines.
+                <br />
+                <br />
+                Open hours: 8.00 - 22.00 Everyday
+                
+            </p>
+            <a class="btn btn-outline-dark" asp-controller="Menu" asp-action="MenuList">VIEW MENU</a>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="break"></div>
+
+
+<div class=" feedback">
+    <div class="card">
+        <div class="text-center mt-5 mb-5">
+            <h2>Follow us</h2>
+
+            <div class="icons">
+                <a href="#"><span><ion-icon class="icon" name="logo-facebook"></ion-icon></span></a>
+                <a href="#"><span><ion-icon class="icon" name="logo-instagram"></ion-icon></span></a>
+                <a href="#"><span><ion-icon class="icon" name="logo-google"></ion-icon></span></a>
+                <a href="#"><span><ion-icon class="icon" name="logo-twitter"></ion-icon></span></a>
+
+            </div>
+            <form method="post" action="Register">
+
+                <div class="mb-3 mt-3">
+                    <input class="form-control" placeholder="Name" />
+                </div>
+
+                <div class="mb-3">
+                    <input class="form-control" placeholder="Email ID" />
+                </div>
+
+                <div class="mb-3">
+                    <input  class="form-control" placeholder="Subject" />
+                </div>
+
+                <div class="mb-5">
+                    <textarea class="form-control" placeholder="Message" rows="3"></textarea>
+                </div>
+
+                <div class="mb-3 d-flex justify-content-center">
+                    <input type="submit" value="Feedback" class="btn btn-outline-dark" />
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

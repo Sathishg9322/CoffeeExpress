@@ -1,0 +1,83 @@
+﻿@using CoffeeShop.Models
+@model Menu
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="row d-flex align-items-center justify-content-center" style="padding-bottom:600px; padding-top:30px;">
+    <div class="col-md-4 card p-3">
+        <a class="text-dark mt-2" asp-controller="Menu" asp-action="Menu"><span><ion-icon name="arrow-back"></ion-icon></span></a>
+
+<h2 class="text-center">@(Model.Id == Guid.Empty ? "Add New Item" : "Edit Item")</h2>
+
+<div class="p-5">
+<form asp-action="Add" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Category" class="control-label"></label>
+                <select asp-for="Category" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>Coffee</option>
+                    <option>Tea</option>
+                    <option>Non-Coffee</option>
+                    <option>Desserts</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Item" class="control-label"></label>
+        <input asp-for="Item" class="form-control" />
+                <span asp-validation-for="Item" class="text-danger"></span>
+    </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ImageFile" class="control-label"></label>
+        <input asp-for="ImageFile" type="file" class="form-control" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+    </div>
+
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <div class="form-group">
+                    <label>Current Image</label>
+                    <br />
+                    <img src="@Model.ImagePath" alt="Profile Image" width="150" height="150" />
+                </div>
+            }
+
+
+    <div class="text-center mt-5">
+        <button type="submit" class="btn btn-primary">  @(Model.Id == Guid.Empty ? "Add" : "Update")</button>
+        <button class="btn btn-danger" type="reset">Cancel</button>
+    </div>
+           
+
+    </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,49 @@
+﻿@model List<CoffeeShop.Models.Menu>
+
+
+<div class="container" style="padding-bottom:600px; padding-top:30px;">
+    <div class="row">
+
+        <div>
+            <h2>Menu List</h2>
+            <a asp-action="Add" asp-controller="Menu" class="btn btn-outline-dark justify-content-end">Add New Item</a>
+            <a asp-action="MenuList" asp-controller="Menu" class="btn btn-outline-dark justify-content-end">Preview</a>
+
+        </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Category</td>
+                <td>@item.Item</td>
+                <td>@item.Description</td>
+                <td>₹ @item.Price</td>
+                <td>
+                    <div class="d-flex justify-content-evenly">
+                        <a asp-action="Add" asp-controller="Menu" asp-route-id="@item.Id" class="btn btn-outline-primary">Edit</a> |
+                        <a asp-action="Delete" asp-controller="Menu" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+                    </div>
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+</div>
+</div>
+
+

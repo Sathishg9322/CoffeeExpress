@@ -1,0 +1,65 @@
+﻿@using System.Data
+@model List<CoffeeShop.Models.History>
+
+
+@{
+    ViewBag.Title = "Order Detail";
+}
+
+
+@section Styles {
+    <link href="~/content/order.css" rel="stylesheet" type="text/css" />
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="bg-order text-center">
+    <h1 class="display-2">Order Detail</h1>
+</div>
+
+
+<div class="container" style="padding-bottom:600px; padding-top:50px;">
+    <div class="row">
+        @* <h2>Order Detail</h2> *@
+        <a asp-action="OrderHistory" class="ms-3 text-dark mb-2" style="font-size:20px;"><span><ion-icon name="arrow-back"></ion-icon></span></a>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr class="text-white bg-dark">
+                        <th>Date</th>
+                        <th>Order Id</th>
+                        <th>Name</th>
+                        <th>Item</th>
+                        <th>Payment</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                                    
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Datetime.ToString("d")</td>
+                            <td>@item.OrderId</td>
+                            <td>@item.Name</td>
+                            <td>@{int count = 0;}
+                                @foreach (var i in item.Item.Split(','))
+                                {
+                                    <div>@(++count). @i.Trim()</div>
+                                }
+                            </td>
+                            <td>@item.Payment</td>
+                            <td>@item.Total</td>
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

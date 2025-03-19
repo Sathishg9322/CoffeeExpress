@@ -1,0 +1,80 @@
+﻿@using System.Security.Claims
+
+@model List<CoffeeShop.Models.OrderId>
+
+    
+
+        @{
+        var isAuthenticated = User.Identity.IsAuthenticated;
+        var username = isAuthenticated ? User.Identity.Name : null;
+        var role = isAuthenticated ? User.FindFirst(ClaimTypes.Role)?.Value : null;
+    }
+
+    @if(isAuthenticated)
+{
+    
+    
+<div class="row" style="padding-bottom:600px;">
+    <div class="card col-md-4 offset-md-4">
+        <a class="text-dark mt-2" asp-controller="Menu" asp-action="MenuList"><span><ion-icon name="arrow-back"></ion-icon></span></a>
+        
+        <h3 class="text-center">CoffeShop</h3>
+        <p class="text-center">No:123,xyz Road,<br>City,State,<br>India.<br>Ph.No: 9999 9999<br>Email: coffeeshop@gmail.com</p>
+        <hr />
+        <div class="d-flex justify-content-between">
+        <p class="text-dark">ID: @ViewBag.Id</p>
+        <p class="text-end">Date: @DateTime.Now</p>
+        </div>
+        
+    
+        <table>
+            <thead class="table-bordered">
+                <tr>
+                    <th>Item</th>
+                    <th class="text-end">Qty</th>
+                    <th class="text-end">Rate</th>
+                    <th class="text-end">Price</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                @{int qty = 0;}
+                @{decimal total = 0;}
+               
+                @foreach(var i in Model)
+                {
+                    qty += i.Quantity;
+                    total += i.Price * i.Quantity;
+                    
+                    <tr>
+                        <td>@i.Item</td>
+                        <td class="text-center">@i.Quantity</td>
+                        <td class="text-end">@i.Price</td>
+                        <td class="text-end">@(i.Price*i.Quantity)</td>
+                    </tr>   
+                }
+               
+            </tbody>
+        </table>
+        <hr />
+        
+        <p class="text-end">Total Qty: @qty</p>
+        <h6 class="text-end">Grand Total: @total </h6>
+        <hr />
+        <p>Name: @ViewBag.Name</p>
+        <p>Payment mode: @ViewBag.Random</p>
+        <p class="text-center">Thank You!..</p>
+    </div>
+    </div>
+
+}
+
+else
+{
+    <div class="col-12 text-center mt-5">
+        
+    <p>Login to Continue...</p>
+    
+    <a class="btn btn-success btn-sm text-white" asp-controller="Account" asp-action="Login">Login/SignUp</a>
+    </div>
+}

@@ -1,0 +1,57 @@
+﻿@model CoffeeShop.Models.Menu
+
+
+<style>
+
+    .btn{
+        background-color: #00754a;
+        margin:5px;
+        height:70%;
+        border-radius:50px;
+        align-items:center;
+        display:flex;
+        justify-content:center;
+    }
+
+
+    .item_btn{
+        border:none;
+        background-color:transparent;
+        color:white;
+        font-size:14px;     
+    }
+    .icon{
+        color:white;
+        font-size:20px;
+        margin-top:3px;   
+    }
+
+    p{
+        margin-bottom:5px;
+    }
+
+    
+
+</style>
+
+
+
+@if (Model.Quantity == 0)
+
+{
+    <div class="btn">
+    <button class="add-item item_btn" data-id="@Model.Id"><p>Add Item</p></button>
+    </div>
+}
+
+else
+
+{
+    <div class="btn">
+        <button class="decrease item_btn" data-id="@Model.Id"><span><ion-icon class="icon" name="remove-circle-outline"></ion-icon></span></button>
+    <span class="quantity item_btn me-1 ms-1">@Model.Quantity</span>
+        <button class="increase item_btn" data-id="@Model.Id"><span><ion-icon class="icon" name="add-circle-outline"></ion-icon></span></button>
+    </div>
+}
+
+

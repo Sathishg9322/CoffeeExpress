@@ -1,0 +1,176 @@
+﻿@using CoffeeShop.Models
+@using System.Security.Claims
+@model User
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@{
+    var isAuthenticated = User.Identity.IsAuthenticated;
+    var username = isAuthenticated ? User.Identity.Name : null;
+    var role = isAuthenticated ? User.FindFirst(ClaimTypes.Role)?.Value : null;
+}
+
+
+
+@section Styles {
+    <link href="~/content/login.css" rel="stylesheet" type="text/css" />
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="bg-login text-center">
+    <h1 class="display-2">Login</h1>
+</div>
+
+
+
+
+<div class="text-center mt-5" style="padding-bottom:600px;">
+    <img class="rounded-circle" width="300" height="300" src="~/images/iconlogin.jpg" alt="profile" />
+    <h4>Welcome to Coffee Express</h4>
+
+    @if (isAuthenticated)
+    {
+        <h6>@username</h6>
+        
+        <a class="btn btn-dark mt-4" asp-action="Logout" asp-controller="Account">Logout</a>
+
+    }
+
+    else
+    {
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Login
+        </button>
+    }
+    
+    
+</div>
+
+
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-body">
+                <div class="d-flex justify-content-between mb-4">
+                    <h4 class="modal-title" id="loginModalLabel"><b>Login</b></h4>
+                    <a class="close text-dark" data-bs-dismiss="modal" aria-label="Close"><span><ion-icon name="close"></ion-icon></span></a>
+                </div>
+               
+
+                <form method="post" action="Login">
+                    
+                    <div class="mb-3">
+                        <label class="fw-lighter mb-1">Email Id</label>
+                        <input asp-for="EmailId" class="form-control" placeholder="Enter Email ID" />
+                        <span asp-validation-for="EmailId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="fw-lighter mb-1">Password</label>
+                        <input asp-for="Password" class="form-control" placeholder="Enter Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    
+                        <div class="d-flex mb-4">
+                        <p class="fw-lighter">Don't have an account?</p>
+                        <a class="text-success" href="#" id="openSignupModal" >SignUp</a>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-center">
+                            <input type="submit" value="Login" class="btn btn-dark" />
+                        </div>
+                    
+
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="d-flex justify-content-between mb-4">
+                    <h4 class="modal-title" id="signupModalLabel"><b>Sign Up</b></h4>
+                    <a class="close text-dark" data-bs-dismiss="modal" aria-label="Close"><span><ion-icon name="close"></ion-icon></span></a>
+                </div>
+
+
+                <form method="post" action="Register">
+
+                    <div class="mb-3">
+                        <label class="fw-lighter mb-1">Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter your Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="fw-lighter mb-1">Email Id</label>
+                        <input asp-for="EmailId" class="form-control" placeholder="Enter Email ID" />
+                        <span asp-validation-for="EmailId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="fw-lighter mb-1">Password</label>
+                        <input asp-for="Password" class="form-control" placeholder="Enter Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="d-flex mb-4">
+                        <p class="fw-lighter">Already have an account?</p>
+                        <a class="text-success" href="#" id="openLoginModal" >Login</a>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-center">
+                        <input type="submit" value="SignUp" class="btn btn-dark" />
+                    </div>
+
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+        const signupModal = new bootstrap.Modal(document.getElementById("signupModal"));
+
+        document.getElementById("openSignupModal").addEventListener("click", function (event) {
+            event.preventDefault();
+            loginModal.hide(); 
+            setTimeout(() => signupModal.show(), 500); 
+        });
+
+        document.getElementById("openLoginModal").addEventListener("click", function (event) {
+            event.preventDefault();
+            signupModal.hide(); 
+            setTimeout(() => loginModal.show(), 500);  
+        });
+    });
+</script>
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

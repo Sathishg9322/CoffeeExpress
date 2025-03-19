@@ -1,0 +1,48 @@
+﻿
+<div class="row">
+    <div class="col-md-3 d-none d-md-block">
+        <nav class="navbar flex-column navbar-expand-lg navbar-nav-scroll navbar-light bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-house"></i>Home
+                            </a>
+                        </li>
+
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+
+
+                        @foreach (var category in Model)
+                        {
+                            <li>
+                                <a href="#@category.Key" data-bs-toggle="collapse" role="button" aria-expanded="false" class="nav-link px-0 align-items-sm-start ">
+                                    <i class="fs-4 bi-bootstrap"></i>@category.Key
+                                </a>
+                                <ul class="collapse nav flex-column ms-1" id="@category.Key" data-bs-parent="#menu">
+                                    @foreach (var item in category.Value)
+                                    {
+
+                                        <li class="w-100">
+                                            <a href="@Url.Action("ItemQuantity" ,"Menu", new{id = item.Id})" class="nav-link px-0 text-black">@item.Item</a>
+                                        </li>
+
+                                    }
+                                </ul>
+                            </li>
+                        }
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+    </div>

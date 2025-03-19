@@ -1,0 +1,143 @@
+﻿/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Sacramento&family=WindSong:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Sacramento&family=Tangerine:wght@400;700&family=WindSong:wght@400;500&display=swap');
+
+/* Design */
+*,
+*::before,
+*::after {
+   
+}
+
+
+.bg-menu {
+    background-image: url('../images/bg-menu.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    padding-top: 7%;
+    padding-bottom:7%;
+    height: 100%;
+    opacity: 1;
+    visibility: inherit;
+}
+
+    .bg-menu h1 {
+        font-family: "WindSong", serif;
+    }
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+    .main h1 {
+        font-family: "Tangerine", serif;
+       
+        font-weight: 400;
+        text-align: center;
+    }
+
+img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cards_item {
+    display: flex;
+    padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+    .cards_item {
+        width: 50%;
+    }
+}
+
+@media (min-width: 56rem) {
+    .cards_item {
+        width: 33.3333%;
+    }
+}
+
+.cards_item .card {
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    overflow: visible;
+    transition: all .35s ease;
+}
+    .cards_item .card:hover {
+        width: 24em;
+        transform: scale(1.1);
+    }
+   .cards_item .card::before{
+    width: 100%;
+    opacity: 1;
+    transition: opacity .5s ease, width .5s ease;
+    transition-delay: 0;
+}
+
+
+
+.menu {
+    background-color: #f2f0eb;
+    padding: 10px;
+}
+
+    .menu .nav-link {
+        position: relative;
+        color: #00000094;
+        transition: color 0.3s ease-in-out;
+    }
+
+        .menu .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            color: #279b5b;
+            border-bottom: 2px solid #279b5b;
+            transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+        }
+
+        .menu .nav-link:hover::after {
+            width: 100%;
+            color: #279b5b;
+            left: 0;
+        }
+
+        .menu .nav-link:hover {
+            color: #279b5b;
+        }
+
+        .menu .nav-link.active {
+            font-weight: bold;
+            color: #279b5b;
+            border-bottom: 2px solid #279b5b;
+        }
+
+
+
+
+
+
+
+
+

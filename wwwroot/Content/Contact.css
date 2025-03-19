@@ -1,0 +1,61 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Sacramento&family=WindSong:wght@400;500&display=swap');
+
+
+.bg-contact {
+    background-image: url('../images/bg-contact.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    padding-top: 7%;
+    padding-bottom: 7%;
+    height: 100%;
+    opacity: 1;
+    visibility: inherit;
+}
+
+
+    .bg-contact h1 {
+        font-family: "WindSong", serif;
+    }
+
+
+.content-wrap {
+    padding-top: 70px;
+    padding-bottom: 100px;
+}
+
+.wrapper-content-1 {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.break {
+    border-top: 2px solid #d5dedf;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+
+.feedback {
+    padding-top:5%;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom:700px;
+}
+
+.feedback .card {
+    padding-left: 15%;
+    padding-right: 15%;
+    border:2px solid;
+}
+
+.icons .icon {
+    padding: 1%;
+    color: #e4e3e2;
+    transition: all 0.3s ease 0s;
+}
+
+.icon:hover{
+    color:black;
+}

@@ -1,0 +1,49 @@
+﻿@using CoffeeShop.Models
+@model User
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="row d-flex align-items-center justify-content-center">
+<div class="col-md-4 card p-3">
+        <p class="text-center text-danger">@ViewBag.Message</p>
+<h2 class="text-center">Register</h2>
+<form method="post" action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-1">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+            <div class="mb-1">
+                <label asp-for="EmailId" class="control-label"></label>
+                <input asp-for="EmailId" class="form-control" />
+                <span asp-validation-for="EmailId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-1">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+    <div class="row">
+        <div class="col-8">
+            <a asp-action="Login" class="float-start mt-2">Have Account</a>
+                </div>
+                <div class="col-4">
+   <input type="submit" value="Register" class="btn btn-primary btn-sm float-end"/>
+                </div>
+            </div>
+            
+</form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

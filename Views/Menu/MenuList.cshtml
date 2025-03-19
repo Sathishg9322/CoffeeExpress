@@ -1,0 +1,104 @@
+﻿@using System.Security.Claims
+@model Dictionary<string, List<CoffeeShop.Models.Menu>>
+
+@{
+    ViewBag.Title = "Menu";
+}
+
+
+@section Styles {
+    <link href="~/content/menu.css" rel="stylesheet" type="text/css"/>
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="bg-menu text-center">
+   
+    <h1 class="display-2">Menu</h1>
+
+</div>
+
+
+
+
+
+<div class="row">
+<div class="col-md-12 ">
+        <div>
+            <nav class="menu">
+        <ul class="nav justify-content-center">
+             @foreach (var category in Model)
+                        {
+            <li class="nav-item ">
+                            <a id="loadItemCard" class="nav-link category-link" href="#" data-category="@category.Key">@category.Key</a>
+            </li>
+                        }
+        </ul>
+            </nav>
+    </div>
+</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $(".category-link").on("click", function (e) {
+            e.preventDefault();  // Prevent default behavior (page reload)
+
+            $(".category-link").removeClass("active");
+            $(this).addClass("active");
+
+            var categoryKey = $(this).data("category");  // Get category key
+
+            $.ajax({
+                url: '@Url.Action("GetCategory", "Menu")',  // Adjust Controller and Action as needed
+                type: 'GET',
+                data: { category: categoryKey },  // Pass the category as data
+                success: function (data) {
+                    $("#categoryContent").html(data);  // Load the content into the #categoryContent div
+                },
+                error: function () {
+                    alert("Error loading category.");
+                }
+            });
+        });
+    });
+</script>
+
+
+<div id="categoryContent" style="padding-bottom:600px;">
+    <div  class="col-md-12 d-flex align-items-center justify-content-center card border-0 p-3">
+        @* <h2 class="text-center">Menu</h2> *@
+        <hr />
+
+        <div class="row container">
+            
+                 @foreach (var category in Model)
+                        {
+                            
+                            <div class="col-md col-sm ">
+                            <h3 class="text-center">@category.Key</h3>
+                            <hr class="ms-5 me-5"/>
+                            
+                                @foreach (var item in category.Value)
+                                {
+                        <p class="ps-5">@item.Item = ₹ @item.Price</p>
+                                }
+                                </div>
+                        }
+        </div>
+     
+    </div>
+</div>
+
+
+
+                   
+
+

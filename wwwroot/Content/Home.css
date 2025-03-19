@@ -1,0 +1,101 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Sacramento&display=swap');
+
+
+@media (min-width: 40rem) {
+    .carousel {
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 56rem) {
+    .carousel {
+        width: 50%;
+        align-items:center;
+    }
+}
+
+.bg-main {
+    background-image: url('../images/bg-main.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    padding-top: 100px;
+    height: 100%;
+    opacity: 1;
+    visibility: inherit;
+}
+
+.wrapper-main{
+    padding-bottom: 400px;
+}
+
+.line-1 h1 {
+    font-family: "Pacifico", serif;
+}
+
+.line-2 h1 {
+    font-family: Droid Serif;
+}
+
+.line-3 h1 {
+    font-family: "Pacifico", serif;
+}
+
+
+.content-wrap{
+    padding-top:70px;
+    padding-bottom:100px;
+}
+
+.wrapper-content-1 {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+
+
+.bg-content-1 {
+    background-image: url('../images/bg-content-1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    padding-top: 100px;
+    height: 100%;
+    opacity: 1;
+    visibility: inherit;
+}
+
+.wrapper-slide-1 {
+   
+    padding-bottom: 300px;
+}
+
+.padding {
+    padding-left: 60%;
+    
+}
+
+.l-2 h1 {
+    font-family: "Sacramento", serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.carousel-content{
+   
+    padding-bottom:600px;
+}
